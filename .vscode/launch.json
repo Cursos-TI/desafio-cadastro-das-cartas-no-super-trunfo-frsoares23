@@ -2,6 +2,59 @@
     // Use o IntelliSense para saber mais sobre os atributos possíveis.
     // Focalizar para exibir as descrições dos atributos existentes.
     // Para obter mais informações, acesse: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": []
-}
+    {
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "name": "(gdb) Iniciar",
+                "type": "cppdbg",
+                "request": "launch",
+                "program": "insira o nome do programa, por exemplo ${workspaceFolder}/a.out",
+                "args": [],
+                "stopAtEntry": false,
+                "cwd": "${fileDirname}",
+                "environment": [],
+                "externalConsole": false,
+                "MIMode": "gdb",
+                "setupCommands": [
+                    {
+                        "description": "Habilitar a reformatação automática para gdb",
+                        "text": "-enable-pretty-printing",
+                        "ignoreFailures": true
+                    },
+                    {
+                        "description": "Definir Tipo de Desmontagem como Intel",
+                        "text": "-gdb-set disassembly-flavor intel",
+                        "ignoreFailures": true
+                    }
+                ]
+            }
+          {
+            "name": "Debug C Program",
+            "type": "cppdbg",  // Tipo para C/C++.
+            "request": "launch",
+            "program": "${workspaceFolder}/a.out", // Arquivo executável gerado após compilação.
+            "args": [],  // Argumentos de linha de comando, se houver.
+            "stopAtEntry": false, // Defina como true para parar no ponto de entrada.
+            "cwd": "${workspaceFolder}", // Diretório de trabalho.
+            "environment": [],
+            "externalConsole": true, // Se deseja abrir o console externo.
+            "MIMode": "gdb",  // Usando o GDB para depuração.
+            "setupCommands": [
+              {
+                "description": "Habilitar a exibição da variável local",
+                "text": "-enable-pretty-printing",
+                "ignoreFailures": true
+              }
+            ],
+            "preLaunchTask": "build", // A tarefa de compilação a ser executada antes da depuração.
+            "miDebuggerPath": "/usr/bin/gdb",  // Caminho do GDB, pode variar de acordo com o seu sistema.
+            "logging": {
+              "moduleLoad": false,
+              "programOutput": true,
+              "exceptions": true
+            }
+          }
+        ]
+      }
+      
